@@ -14,13 +14,12 @@ public class Phonebook {
 
     public void exportPhonebook(Map<String, String> contacts, String output) {
 
-        List<String> result = new ArrayList<>(contacts.keySet());
-
-        if (result.isEmpty() || result == null || output == null) {
-            throw new IllegalArgumentException();
+        if (contacts.isEmpty() || contacts == null || output == null) {
+            throw new IllegalArgumentException("Invalid input");
         }
 
         File file = new File(output);
+
         BufferedWriter bw = null;
 
         try {
@@ -43,7 +42,7 @@ public class Phonebook {
         finally {
 
             try {
-                assert bw != null;
+
                 bw.close();
             }
             catch (Exception e) {
